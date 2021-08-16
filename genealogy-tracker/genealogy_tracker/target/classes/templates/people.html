@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="ISO-8859-1">
+        <title>People in Your Family Tree</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div th:replace="navbar.html :: navbar"></div>
+        <div class="container">
+            <table class="table table-bordered table-hover bg-info text-light">
+                <thead>
+                    <tr>
+                        <th>Person ID</th>
+                        <th>Last Name</th>
+                        <th>First Name</th>
+                        <th>Gender</th>
+                        <th>Date of Birth</th>
+                        <th>Place of Birth</th>
+                        <th>Date of Death</th>
+                        <th>Place of Death</th>
+                        <th>Father ID</th>
+                        <th>Mother ID</th>
+                        <th>Spouse ID</th>
+                        <th>Notes</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="person: ${people}">
+                        <td><a th:text="${person.getPersonID()}" th:with="u=${person.getPersonID()}" th:href="@{/person/} + ${u}" class="link-light"></a></td>
+                        <td th:text="${person.getLastName()}"></td>
+                        <td th:text="${person.getFirstName()}"></td>
+                        <td th:text="${person.getGender()}"></td>
+                        <td th:text="${person.getDOBirth()}"></td>
+                        <td th:text="${person.getPOBirth()}"></td>
+                        <td th:text="${person.getDODeath()}"></td>
+                        <td th:text="${person.getPODeath()}"></td>
+                        <td><a th:if="${person.getFatherID() != 0}" th:text="${person.getFatherID()}" th:with="u=${person.getFatherID()}" th:href="@{/person/} + ${u}" class="link-light"></a></td>
+                        <td><a th:if="${person.getMotherID() != 0}" th:text="${person.getMotherID()}" th:with="u=${person.getMotherID()}" th:href="@{/person/} + ${u}" class="link-light"></a></td>
+                        <td><a th:if="${person.getSpouseID() != 0}" th:text="${person.getSpouseID()}" th:with="u=${person.getSpouseID()}" th:href="@{/person/} + ${u}" class="link-light"></a></td>
+                        <td th:text="${person.getNotes()}"></td>
+                        <td>
+                            <form th:action="@{/person/} + ${person.getPersonID()} + '/delete'" method="POST">
+                                <button class="btn btn-danger" type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

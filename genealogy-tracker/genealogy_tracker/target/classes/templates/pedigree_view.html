@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+        <meta charset="ISO-8859-1">
+        <title>View Family Tree</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    </head>
+
+<body>
+
+	<div class="container">
+	<h1 align="center">PEDIGREE VIEW</h1>
+	<table border="3" cellspacing="2" align="center" width="600">
+		<!--<caption>Family Tree Pedigree Page</caption>-->
+		<tr th:each="family_tree: ${tree}">
+			<td th:action colspan="22" align="center" height="50"
+				width="100">
+				<a th:text="${family_tree.getTreeName()}" th:with="u=${family_tree.getTreeName()}" th:href="@{/family_tree/} + ${u}" class="link-light"></a>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="5" align="center" height="50"
+				>
+				<b>Generation I: Root</b>
+			</td>
+			<td colspan="5" align="center" height="50">
+				<b>Generation II: Parents</b>
+			</td>
+			<td colspan="5" align="center" height="50">
+				<b>Generation III: Grandparents</b>
+			</td>
+			<td colspan="7" align="center" height="50">
+				<b>Generation IV:<br>Great-Grandparents</b>
+			</td>
+		</tr>
+		<tr><!--ggrandfather 1's name-->
+			<td colspan="15" align="center" height="50">
+				<b></b></td>
+			<td colspan="2" align="center" height="50">Name:</td>
+			<td colspan="2" align="center" height="50">GGF1 First </td>
+			<td colspan="3" align="center" height="50">GGF1 Last Name Here</td>
+		</tr>
+		<tr><!--grandfather 1's name, ggrandfather 1's dates-->
+			<td colspan="10" align="center" height="50">
+				<b></b></td>
+			<td align="center" height="50">Name:</td>
+			<td colspan="2" align="center" height="50">GF1 First</td>
+			<td colspan="2" align="center" height="50">GF1 Last</td>
+			<td colspan="2" align="center" height="50">Date of Birth:</td>
+			<td colspan="2" align="center" height="50">00/00/0000</td>
+			<td colspan="2" align="center" height="50">Date of Death:</td>
+			<td colspan="2" align="center" height="50">00/00/0000</td>
+		</tr>
+		<tr><!--grandfather 1's date of birth-->
+			<td colspan="10" align="center" height="50">
+				<b></b></td>
+			<td colspan="3" align="center" height="50">Date of Birth:</td>
+			<td colspan="2" align="center" height="50">00/00/0000</td>
+			<td colspan="10" align="center" height="50">
+				<b></b></td>			
+			
+		</tr>
+		<tr><!--grandfather 1's date of death ggrandmother 1's name-->
+			<td colspan="6" align="center" height="50">
+				<b></b></td>
+			<td <td colspan="2" align="center" height="50">First Name:</td>
+			<td colspan="2" align="center" height="50">Father First Name </td>
+			<td colspan="3" align="center" height="50">Date of Death:</td>
+			<td colspan="2" align="center" height="50">00/00/0000</td>
+			<td colspan="2" align="center" height="50">Name:</td>
+			<td colspan="2" align="center" height="50">GGM1 First</td>
+			<td colspan="3" align="center" height="50">GGM1 Last Name Here</td>			
+		</tr>
+		<tr><!--father's last name & ggrandmother 1's dates-->
+			<td colspan="6" align="center" height="50">
+				<b></b></td>
+			<td colspan="2" align="center" height="50">Last Name:</td>
+			<td colspan="2" align="center" height="50">Father Last Name </td>
+			<td colspan="5" align="center" height="50"></td>
+			<td colspan="2" align="center" height="50">Date of Birth:</td>
+			<td colspan="2" align="center" height="50">00/00/0000</td>
+			<td colspan="2" align="center" height="50">Date of Death:</td>
+			<td colspan="2" align="center" height="50">00/00/0000</td>
+			
+		</tr>
+		<tr><!--father's DOB & ggrandfather 2's name-->
+			<td colspan="6" align="center" height="50">
+				<b></b></td>
+			<td colspan="2" align="center" height="50">Date of Birth:</td>
+			<td colspan="2" align="center" height="50">00/00/0000 </td>
+			<td colspan="5" align="center" height="50"></td>
+			<td colspan="2" align="center" height="50">Name:</td>
+			<td colspan="2" align="center" height="50">GGF2 First </td>
+			<td colspan="3" align="center" height="50">GGF2 Last Name Here</td>
+		</tr>
+		<tr><!--father's DOD,  grandmother 1's name, ggrandfather 2's dates-->
+			<td colspan="6" align="center" height="50">
+				<b></b></td>
+			<td colspan="2" align="center" height="50">Date of Death:</td>
+			<td colspan="2" align="center" height="50">00/00/0000 </td>
+			<td align="center" height="50">Name:</td>
+			<td colspan="2" align="center" height="50">GM1 First</td>
+			<td colspan="2" align="center" height="50">GM1 Last</td>
+			<td colspan="2" align="center" height="50">Date of Birth:</td>
+			<td colspan="2" align="center" height="50">00/00/0000</td>
+			<td colspan="2" align="center" height="50">Date of Death:</td>
+			<td colspan="2" align="center" height="50">00/00/0000</td>
+		</tr>
+		<tr><!--grandmother 1's date of birth-->
+			<td colspan="10" align="center" height="50">
+				<b></b></td>
+			<td colspan="3" align="center" height="50">Date of Birth:</td>
+			<td colspan="2" align="center" height="50">00/00/0000</td>
+			<td colspan="10" align="center" height="50">
+				<b></b></td>			
+		</tr>
+		<tr><!--root person's first name, grandmother 1's date of death ggrandmother 2's name-->
+			<td colspan="2" align="center" height="50">Name:</td>
+			<td colspan="2" align="center" height="50">Root First Name</td>
+			<td colspan="6" align="center" height="50"></td>
+			<td colspan="3" align="center" height="50">Date of Death:</td>
+			<td colspan="2" align="center" height="50">00/00/0000</td>
+			<td colspan="2" align="center" height="50">Name:</td>
+			<td colspan="2" align="center" height="50">GGM2 First</td>
+			<td colspan="3" align="center" height="50">GGM2 Last Name Here</td>			
+		</tr>
+		<trth:each="person: ${pedigree_view}"><!--root person's last name, ggrandmother 2's dates-->
+			<td colspan="2" align="center" height="50"><a th:text="${person.getPersonID()}" th:with="u=${person.getPersonID()}" th:href="@{/person/} + ${u}" class="link-light"></a></td>
+			<td colspan="2" align="center" height="50" ></td>
+			<td colspan="11.5" align="center" height="50"></td>
+			<td colspan="2" align="center" height="50">Date of Birth:</td>
+			<td colspan="2" align="center" height="50">00/00/0000</td>
+			<td colspan="2" align="center" height="50">Date of Death:</td>
+			<td colspan="2" align="center" height="50">00/00/0000</td>
+		</tr>
+		<!---breaking here for alignment (set 1)-->
+		<tr><!--root person's DOB, ggrandfather 3's name-->
+			<td colspan="2" align="center" height="50">Date of Birth:</td>
+			<td colspan="2" align="center" height="50">00/00/0000</td>
+			<td colspan="11.5" align="center" height="50"></td>
+			<td colspan="2" align="center" height="50">Name:</td>
+			<td colspan="2" align="center" height="50">GGF3 First </td>
+			<td colspan="3" align="center" height="50">GGF3 Last Name Here</td>
+		</tr>
+		<tr><!--root person's DOB, grandfather 2's name, ggrandfather 3's dates-->
+			<td colspan="3" align="center" height="50">Date of Death:</td>
+			<td colspan="2" align="center" height="50">00/00/0000</td>
+			<td colspan="5.5" align="center" height="50"></td>
+			<td align="center" height="50">Name:</td>
+			<td colspan="2" align="center" height="50">GF2 First</td>
+			<td colspan="2" align="center" height="50">GF2 Last</td>
+			<td colspan="2" align="center" height="50">Date of Birth:</td>
+			<td colspan="2" align="center" height="50">00/00/0000</td>
+			<td colspan="2" align="center" height="50">Date of Death:</td>
+			<td colspan="2" align="center" height="50">00/00/0000</td>
+		</tr>
+		<tr><!--grandfather 2's date of birth-->
+			<td colspan="10" align="center" height="50">
+				<b></b></td>
+			<td colspan="3" align="center" height="50">Date of Birth:</td>
+			<td colspan="2" align="center" height="50">00/00/0000</td>			
+			<td colspan="10" align="center" height="50">
+				<b></b></td>
+		</tr>
+		<tr><!--mother's first name, grandfather 2's date of birth ggrandmother 3's name-->
+			<td colspan="6" align="center" height="50">
+				<b></b></td>
+			<td <td colspan="2" align="center" height="50">First Name:</td>
+			<td colspan="2" align="center" height="50">Mother First Name </td>
+			<td colspan="3" align="center" height="50">Date of Death:</td>
+			<td colspan="2" align="center" height="50">00/00/0000</td>
+			<td colspan="2" align="center" height="50">Name:</td>
+			<td colspan="2" align="center" height="50">GGM3 First</td>
+			<td colspan="3" align="center" height="50">GGM3 Last Name Here</td>			
+		</tr>
+		<tr><!--mother's last name, ggrandmother 3's dates-->
+			<td colspan="6" align="center" height="50">
+				<b></b></td>
+			<td colspan="2" align="center" height="50">Last Name:</td>
+			<td colspan="2" align="center" height="50">Mother Last Name </td>
+			<td colspan="5" align="center" height="50"></td>
+			<td colspan="2" align="center" height="50">Date of Birth:</td>
+			<td colspan="2" align="center" height="50">00/00/0000</td>
+			<td colspan="2" align="center" height="50">Date of Death:</td>
+			<td colspan="2" align="center" height="50">00/00/0000</td>
+		</tr>
+		<tr><!--mother's DOB, ggrandfather 4's name-->
+			<td colspan="6" align="center" height="50">
+				<b></b></td>
+			<td colspan="2" align="center" height="50">Date of Birth:</td>
+			<td colspan="2" align="center" height="50">00/00/0000 </td>
+			<td colspan="5" align="center" height="50"></td>
+			<td colspan="2" align="center" height="50">Name:</td>
+			<td colspan="2" align="center" height="50">GGF4 First </td>
+			<td colspan="3" align="center" height="50">GGF4 Last Name Here</td>
+		</tr>
+		<tr><!--mother's DOD, grandmother 2's name, ggrandfather 4's dates-->
+			<td colspan="6" align="center" height="50">
+				<b></b></td>
+			<td colspan="2" align="center" height="50">Date of Death:</td>
+			<td colspan="2" align="center" height="50">00/00/0000 </td>
+			<td align="center" height="50">Name:</td>
+			<td colspan="2" align="center" height="50">GM2 First</td>
+			<td colspan="2" align="center" height="50">GM2 Last</td>
+			<td colspan="2" align="center" height="50">Date of Birth:</td>
+			<td colspan="2" align="center" height="50">00/00/0000</td>
+			<td colspan="2" align="center" height="50">Date of Death:</td>
+			<td colspan="2" align="center" height="50">00/00/0000</td>
+		</tr>
+		<tr><!--grandmother 2's date of birth-->
+			<td colspan="10" align="center" height="50">
+				<b></b></td>
+			<td colspan="3" align="center" height="50">Date of Birth:</td>
+			<td colspan="2" align="center" height="50">00/00/0000</td>		
+			<td colspan="10" align="center" height="50">
+				<b></b></td>
+		</tr>
+		<tr><!--grandmother 2's date of birth ggrandmother 4's name-->
+			<td colspan="10" align="center" height="50">
+				<b></b></td>
+			<td colspan="3" align="center" height="50">Date of Death:</td>
+			<td colspan="2" align="center" height="50">00/00/0000</td>
+			<td colspan="2" align="center" height="50">Name:</td>
+			<td colspan="2" align="center" height="50">GGM4 First</td>
+			<td colspan="3" align="center" height="50">GGM4 Last Name Here</td>		
+		</tr>
+		<tr><!--ggrandmother 4's dates-->
+			<td colspan="15" align="center" height="50">
+				<b></b></td>
+			<td colspan="2" align="center" height="50">Date of Birth:</td>
+			<td colspan="2" align="center" height="50">00/00/0000</td>
+			<td colspan="2" align="center" height="50">Date of Death:</td>
+			<td colspan="2" align="center" height="50">00/00/0000</td>
+		</tr>
+		
+	</table>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+package genealogy_tracker.genealogy_tracker.user;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface UserRepository extends JpaRepository<User, Integer>{
+    @Query("SELECT u from User u where u.Username = ?1")
+    public User findByUsername(String username);
+}
